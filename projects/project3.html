@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Title - Case Study</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background: #fff;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #007bff;
+        }
+
+        /* Case Study Content */
+        .case-study {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .case-study-header {
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .case-study-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: #f3f4f6;
+            border-radius: 8px;
+        }
+
+        .detail-item h3 {
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content {
+            margin: 3rem 0;
+        }
+
+        .project-content section {
+            margin-bottom: 3rem;
+        }
+
+        .project-content h2 {
+            margin-bottom: 1rem;
+        }
+
+        .project-content p {
+            margin-bottom: 1rem;
+        }
+
+        .project-image {
+            width: 100%;
+            height: auto;
+            margin: 2rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .next-prev {
+            display: flex;
+            justify-content: space-between;
+            margin: 4rem 0;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        .next-prev a {
+            text-decoration: none;
+            color: #007bff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Responsive Images */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .case-study-header h1 {
+                font-size: 2rem;
+            }
+
+            .project-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="../index.html">← Back to Portfolio</a></li>
+        </ul>
+    </nav>
+
+    <article class="case-study">
+        <header class="case-study-header">
+            <h1>Project Title</h1>
+            <p>Brief introduction or tagline about the project</p>
+        </header>
+
+        <div class="project-details">
+            <div class="detail-item">
+                <h3>Role</h3>
+                <p>Your role in the project</p>
+            </div>
+            <div class="detail-item">
+                <h3>Timeline</h3>
+                <p>Duration of the project</p>
+            </div>
+            <div class="detail-item">
+                <h3>Tools Used</h3>
+                <p>Key technologies</p>
+            </div>
+            <div class="detail-item">
+                <h3>Client/Company</h3>
+                <p>Project stakeholder</p>
+            </div>
+        </div>
+
+        <div class="project-content">
+            <section>
+                <h2>Overview</h2>
+                <p>Detailed description of the project, its goals, and the problem it solved.</p>
+                <img src="/api/placeholder/800/400" alt="Project Overview" class="project-image">
+            </section>
+
+            <section>
+                <h2>The Challenge</h2>
+                <p>Describe the main challenges and constraints of the project.</p>
+            </section>
+
+            <section>
+                <h2>The Process</h2>
+                <p>Explain your approach, methodology, and key decisions.</p>
+                <img src="/api/placeholder/800/400" alt="Process Documentation" class="project-image">
+            </section>
+
+            <section>
+                <h2>The Solution</h2>
+                <p>Detail the final solution and its impact.</p>
+                <img src="/api/placeholder/800/400" alt="Final Solution" class="project-image">
+            </section>
+
+            <section>
+                <h2>Results & Impact</h2>
+                <p>Share the outcomes, metrics, and learnings from the project.</p>
+            </section>
+        </div>
+
+        <nav class="next-prev">
+            <a href="#">← Previous Project</a>
+            <a href="#">Next Project →</a>
+        </nav>
+    </article>
+</body>
+</html>
