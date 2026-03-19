@@ -145,6 +145,96 @@
         margin-bottom: 0.5rem;
       }
 
+      /* Resource Database Section */
+      .resources {
+        padding: 5rem 2rem;
+        background: #f5fff7;
+      }
+
+      .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        justify-content: center;
+        max-width: 1000px;
+        margin: 0 auto 2.5rem;
+      }
+
+      .tag-btn {
+        background: #fff;
+        border: 2px solid #063f0d;
+        color: #063f0d;
+        padding: 0.35rem 0.9rem;
+        border-radius: 999px;
+        cursor: pointer;
+        font-family: "Caudex", serif;
+        font-size: 0.9rem;
+        transition: background 0.2s, color 0.2s;
+      }
+
+      .tag-btn:hover,
+      .tag-btn.active {
+        background: #063f0d;
+        color: #f5fff7;
+      }
+
+      #resource-results {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .resource-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .resource-item {
+        background: #fff;
+        border-radius: 8px;
+        padding: 1.2rem 1.5rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+      }
+
+      .resource-item a {
+        color: #063f0d;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.05rem;
+      }
+
+      .resource-item a:hover {
+        text-decoration: underline;
+      }
+
+      .resource-item .resource-notes {
+        color: #555;
+        font-size: 0.9rem;
+        margin-top: 0.3rem;
+      }
+
+      .resource-item .resource-tags {
+        margin-top: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+
+      .resource-item .resource-tags span {
+        background: #e6f4e8;
+        color: #063f0d;
+        font-size: 0.78rem;
+        padding: 0.15rem 0.6rem;
+        border-radius: 999px;
+      }
+
+      #resource-placeholder {
+        text-align: center;
+        color: #666;
+        font-style: italic;
+      }
+
       /* About Section */
       .about {
         padding: 5rem 2rem;
@@ -215,6 +305,7 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#resources">Resources</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -273,6 +364,15 @@
       </div>
     </section>
 
+    <section id="resources" class="resources">
+      <h2 class="section-title">Resource Database</h2>
+      <div class="tag-list" id="tag-list"></div>
+      <div id="resource-results">
+        <p id="resource-placeholder">Select a tag above to browse resources.</p>
+        <ul class="resource-list" id="resource-list" style="display:none;"></ul>
+      </div>
+    </section>
+
     <section id="about" class="about">
       <h2 class="section-title">About Me</h2>
       <div class="about-content">
@@ -318,5 +418,68 @@
     <footer>
       <p>&copy; 2025 Abigail Johnson. All rights reserved.</p>
     </footer>
+    <script>
+      let allResources = [];
+      let activeTag = null;
+
+      fetch("assets/resources.json")
+        .then((r) => r.json())
+        .then((data) => {
+          allResources = data;
+
+          // Collect and sort unique tags by frequency
+          const tagCounts = {};
+          data.forEach((r) => r.tags.forEach((t) => {
+            tagCounts[t] = (tagCounts[t] || 0) + 1;
+          }));
+          const tags = Object.keys(tagCounts).sort((a, b) =>
+            tagCounts[b] - tagCounts[a]
+          );
+
+          const tagList = document.getElementById("tag-list");
+          tags.forEach((tag) => {
+            const btn = document.createElement("button");
+            btn.className = "tag-btn";
+            btn.textContent = `${tag} (${tagCounts[tag]})`;
+            btn.addEventListener("click", () => selectTag(tag, btn));
+            tagList.appendChild(btn);
+          });
+        });
+
+      function selectTag(tag, btn) {
+        // Toggle off if same tag clicked again
+        if (activeTag === tag) {
+          activeTag = null;
+          btn.classList.remove("active");
+          document.getElementById("resource-list").style.display = "none";
+          document.getElementById("resource-placeholder").style.display = "block";
+          return;
+        }
+
+        // Deactivate previous button
+        document.querySelectorAll(".tag-btn.active").forEach((b) =>
+          b.classList.remove("active")
+        );
+        btn.classList.add("active");
+        activeTag = tag;
+
+        const filtered = allResources.filter((r) => r.tags.includes(tag));
+        const list = document.getElementById("resource-list");
+        list.innerHTML = "";
+        filtered.forEach((r) => {
+          const li = document.createElement("li");
+          li.className = "resource-item";
+          li.innerHTML = `
+            <a href="${r.link}" target="_blank" rel="noopener noreferrer">${r.name}</a>
+            ${r.notes ? `<p class="resource-notes">${r.notes}</p>` : ""}
+            <div class="resource-tags">${r.tags.map((t) => `<span>${t}</span>`).join("")}</div>
+          `;
+          list.appendChild(li);
+        });
+
+        document.getElementById("resource-placeholder").style.display = "none";
+        list.style.display = "flex";
+      }
+    </script>
   </body>
 </html>
