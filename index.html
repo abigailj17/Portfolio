@@ -235,6 +235,78 @@
         font-style: italic;
       }
 
+      /* Heating Fuel Section */
+      .heating-fuel {
+        padding: 5rem 2rem;
+        background: #fff;
+      }
+
+      .hf-controls {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .hf-controls label {
+        font-size: 1rem;
+        margin-right: 0.75rem;
+      }
+
+      .hf-select {
+        font-family: "Caudex", serif;
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+        border: 2px solid #063f0d;
+        border-radius: 6px;
+        color: #063f0d;
+        cursor: pointer;
+      }
+
+      #hf-status {
+        text-align: center;
+        color: #666;
+        font-style: italic;
+        margin-bottom: 1rem;
+      }
+
+      #hf-results {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .hf-county-title {
+        text-align: center;
+        margin-bottom: 1rem;
+        color: #063f0d;
+      }
+
+      .hf-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .hf-table th,
+      .hf-table td {
+        text-align: left;
+        padding: 0.6rem 1rem;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .hf-table th {
+        background: #063f0d;
+        color: #f5fff7;
+      }
+
+      .hf-table tr:hover td {
+        background: #f5fff7;
+      }
+
+      .hf-source {
+        margin-top: 1rem;
+        font-size: 0.8rem;
+        color: #888;
+        text-align: center;
+      }
+
       /* About Section */
       .about {
         padding: 5rem 2rem;
@@ -306,6 +378,7 @@
         <li><a href="#work">Work</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#resources">Resources</a></li>
+        <li><a href="#heating-fuel">VT Data</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -373,6 +446,18 @@
       </div>
     </section>
 
+    <section id="heating-fuel" class="heating-fuel">
+      <h2 class="section-title">Vermont Housing: Heating Fuel</h2>
+      <div class="hf-controls">
+        <label for="county-select">Select a county:</label>
+        <select id="county-select" class="hf-select" disabled>
+          <option value="">-- choose a county --</option>
+        </select>
+      </div>
+      <p id="hf-status"></p>
+      <div id="hf-results"></div>
+    </section>
+
     <section id="about" class="about">
       <h2 class="section-title">About Me</h2>
       <div class="about-content">
@@ -418,6 +503,7 @@
     <footer>
       <p>&copy; 2025 Abigail Johnson. All rights reserved.</p>
     </footer>
+    <script src="js/heating-fuel.js"></script>
     <script>
       let allResources = [];
       let activeTag = null;
