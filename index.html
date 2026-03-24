@@ -300,6 +300,33 @@
         background: #f5fff7;
       }
 
+      .hf-toggle-row {
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .hf-toggle-btn {
+        font-family: "Caudex", serif;
+        font-size: 0.9rem;
+        padding: 0.4rem 1.2rem;
+        border: 2px solid #063f0d;
+        border-radius: 999px;
+        background: #fff;
+        color: #063f0d;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s;
+      }
+
+      .hf-toggle-btn:hover {
+        background: #063f0d;
+        color: #f5fff7;
+      }
+
+      #hf-chart-container {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
       .hf-source {
         margin-top: 1rem;
         font-size: 0.8rem;
@@ -455,7 +482,14 @@
         </select>
       </div>
       <p id="hf-status"></p>
+      <div class="hf-toggle-row" id="hf-toggle-row" style="display:none;">
+        <button class="hf-toggle-btn" id="hf-toggle-btn">View as Chart</button>
+      </div>
       <div id="hf-results"></div>
+      <div id="hf-chart-container" style="display:none;">
+        <canvas id="hf-chart"></canvas>
+        <p class="hf-source">Source: U.S. Census Bureau, ACS 5-Year Estimates (2022), Table B25040</p>
+      </div>
     </section>
 
     <section id="about" class="about">
@@ -503,6 +537,7 @@
     <footer>
       <p>&copy; 2025 Abigail Johnson. All rights reserved.</p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/heating-fuel.js"></script>
     <script>
       let allResources = [];
