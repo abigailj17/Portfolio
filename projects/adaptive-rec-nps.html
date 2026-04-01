@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adaptive Recreation in the NPS - Abigail Johnson</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caudex:wght@400;700&family=Nunito:wght@300;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Caudex", serif;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    p {
+      font-family: "Avenir", "Nunito", sans-serif;
+      font-weight: 300;
+      font-size: 1.125rem;
+      color: #000;
+    }
+
+    /* Nav */
+    nav {
+      background: #063f0d;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+    nav a {
+      color: #f5fff7;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: #a8d5b5; }
+
+    /* Hero */
+    .hero {
+      background: #063f0d;
+      color: #f5fff7;
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      margin-bottom: 0.75rem;
+    }
+    .hero .type-label {
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #a8d5b5;
+    }
+
+    /* Two-column intro layout */
+    .intro-layout {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 3rem 2rem 0;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .meta-sidebar {
+      background: #f5fff7;
+      border: 1px solid #d4e8d8;
+      border-radius: 8px;
+      padding: 1.5rem;
+      position: sticky;
+      top: 80px;
+    }
+    .meta-item { margin-bottom: 1.2rem; }
+    .meta-item:last-child { margin-bottom: 0; }
+    .meta-item h4 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #063f0d;
+      margin-bottom: 0.25rem;
+    }
+    .meta-item p {
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    /* Main content */
+    .content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 2rem 5rem;
+    }
+
+    /* HMW callout */
+    .hmw {
+      border-left: 4px solid #063f0d;
+      padding: 1rem 1.5rem;
+      margin: 2.5rem 0;
+      background: #f5fff7;
+      border-radius: 0 6px 6px 0;
+      font-size: 1.05rem;
+      color: #063f0d;
+      font-style: italic;
+    }
+
+    /* Sections */
+    .section { margin-bottom: 3rem; }
+    .section h2 {
+      font-size: 1.5rem;
+      color: #063f0d;
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid #d4e8d8;
+    }
+    .section h3 {
+      font-size: 1.4rem;
+      color: #063f0d;
+      margin: 1.5rem 0 0.5rem;
+    }
+    .section ul {
+      font-family: "Avenir", "Nunito", sans-serif;
+      font-weight: 300;
+      font-size: 1.125rem;
+      color: #000;
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .section ul li {
+      margin-bottom: 0.4rem;
+    }
+
+    .section h4 {
+      font-family: "Avenir", "Nunito", sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #000;
+      margin: 1.2rem 0 0.4rem;
+    }
+    .section p { margin-bottom: 0.9rem; }
+
+    /* Result list */
+    .result-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      padding-left: 0;
+    }
+    .result-list li {
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .result-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #063f0d;
+    }
+    .result-list a {
+      color: #063f0d;
+      text-decoration: underline;
+    }
+
+    /* Project images */
+    .project-img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin: 1.5rem 0;
+    }
+    .img-caption {
+      font-size: 0.82rem;
+      color: #666;
+      font-style: italic;
+      margin-top: -1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Bottom gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Back link footer */
+    .back-link {
+      text-align: center;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid #eee;
+    }
+    .back-link a {
+      color: #063f0d;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    .back-link a:hover { text-decoration: underline; }
+
+    @media (max-width: 700px) {
+      .hero h1 { font-size: 1.8rem; }
+      .gallery { grid-template-columns: 1fr; }
+      .intro-layout {
+        grid-template-columns: 1fr;
+      }
+      .meta-sidebar {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html">← Back to Portfolio</a>
+  </nav>
+
+  <div class="hero">
+    <p class="type-label">Experience Design</p>
+    <h1>Adaptive Recreation in the National Park Service</h1>
+  </div>
+
+  <div class="intro-layout">
+    <div class="intro-main">
+      <div class="hmw">
+        How might we create a conversation, build awareness, and spark ideas around adaptive hiking device loan programs for NPS employee and volunteer stakeholders?
+      </div>
+      <div class="section">
+        <h2>Starting Challenge</h2>
+        <p>For some, enjoying trails is not about wearing the right pair of shoes but rather bringing the right pair of wheels. For instance, the National Center for Health Statistics found that 18.5% of adults have at least some difficulty walking or climbing stairs. As a Trail Equity Fellow with the National Park Service, I was tasked with supporting parks in developing loan programs for adaptive devices for hiking. Programs that loan adaptive devices for hiking enable people with disabilities and mobility assistance needs to explore a park without the need for the visitor to purchase or transport their own mobility device.</p>
+        <p>My work plan goal was to determine the existing models for mobility device loan programs in parks and develop a summary case study document to share with parks considering a program. By engaging the design process, I was able to develop case studies that answered parks' most pressing questions and address additional uncovered needs to create community around loan program support and educate the public about adaptive recreation loan programs.</p>
+      </div>
+    </div>
+    <aside class="meta-sidebar">
+      <div class="meta-item">
+        <h4>Time</h4>
+        <p>This project was completed over the course of my Trail Equity Specialist Fellowship with the National Park Service, June 2023 – November 2024</p>
+      </div>
+      <div class="meta-item">
+        <h4>Team</h4>
+        <p>Abigail Johnson (project lead),</p>
+        <p>NPS Office of Outdoor Recreation</p>
+        <p>NPS Park Accessibility for Visitors and Employees (PAVE) Program</p>
+      </div>
+      <div class="meta-item">
+        <h4>Deliverables</h4>
+        <p>Case studies, webinar, and a web map of adaptive recreation loan programs on NPS.gov</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="content">
+    <div class="section">
+      <h2>My Role</h2>
+      <p>I was the primary researcher and designer on this project. I worked with the other members of the NPS Office of Outdoor Recreation and members of the NPS Park Accessibility for Visitors and Employees (PAVE) Program to brainstorm, discuss project direction, and get feedback.</p>
+    </div>
+
+    <div class="section">
+      <h2>The Result: Foundational Resources on Adaptive Recreation for the NPS</h2>
+      <ul class="result-list">
+        <li>A set of five case studies on the internal NPS SharePoint, each on a different adaptive recreation device loan program. Each case study provides a program overview, a main lesson/takeaway, and an overview of the program's logistics. The SharePoint also includes pages on case study methodology and next steps for parks who want to start their own program.</li>
+        <li>A map of known mobility device loan programs on the <a href="https://www.nps.gov/subjects/accessibility/mobility-devices.htm" target="_blank" rel="noopener">NPS.gov accessibility page</a>. The map links directly to the accessibility page for each park's program. The type of device is listed for each program so visitors can quickly see what is available.</li>
+        <li>A webinar on adaptive recreation loan programs in the NPS, held in October 2024. The presenters in this webinar were staff from Great Smoky Mountains National Park, Knox County, Tennessee, and Catalyst Sports. The presentation was a deep dive into the inclusive hikes, bike rides, and camping trips that Great Smokies has held in collaboration with Knox County and Catalyst Sports. The webinar had 50+ participants and generated significant interest both among staff who are currently working to establish programs and staff who want to get their leadership on board with starting a program.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Design Process: Empathize, Define, Ideate, Prototype, Test</h2>
+
+      <h3>Empathize</h3>
+      <h4>Initial Interviews</h4>
+      <p>I started this project as I was also starting my time with the National Park Service. To gain a broad understanding of how mobility devices show up in the agency, I created a stakeholder map with the main categories of managers, users, non-profit advocates, designers/engineers, and trainers. I then conducted five interviews with members of this map to understand how NPS staff learn and interact with adaptive recreation generally, as well as scoping calls with three parks who have established adaptive recreation device loan programs to learn more.</p>
+      <img src="../images/Stakeholder-map_adaptive rec.png" alt="Stakeholder map with 'Mobility Devices' at the center and the main categories of managers, users, non-profit advocates, designers/engineers, and trainers (map is intentionally blurred to preserve anonymity of names)" class="project-img" />
+      <p class="img-caption">Stakeholder map with "Mobility Devices" at the center (intentionally blurred to preserve anonymity)</p>
+
+      <h4>Research on Existing Programs</h4>
+      <p>In order to determine which loan programs to write case studies on, I needed a list of existing programs! I conducted background research through focused Google searches and by reviewing the websites of parks who had previously engaged with accessibility work to compile an initial list of 26 parks that had some sort of loan program for an adaptive device for recreation.</p>
+
+      <h3>Define</h3>
+      <h4>Asking the Right Questions (and the Right Parks)</h4>
+      <p>After conducting initial research, I was ready to create my interview guide for case studies on adaptive recreation devices. For this task, I jumped to the “Define” stage of the process and created a journey map for parks establishing loan programs. From this timeline, I was able to define what questions I needed to ask parks to better understand their programs as well as distill what questions parks would ask when they were thinking about starting a program.</p>
+      <img src="../images/journey-map-and-questions_adaptive rec.png" alt="A journey map for the steps in creating an adaptive recreation device loan program, used to create questions for parks with current programs and parks starting a program." class="project-img" />
+      <p class="img-caption">Journey map and questions used to guide the interview process</p>
+      <p>I brainstormed with my colleagues to build off these questions, then selected the questions that were most essential to understanding the loan programs I would interview.</p>
+      <p>I also used the journey map and associated questions to define nine key considerations or “pivot points” for parks with existing programs that make their loan program distinctive and more or less relevant for a park that is hoping to start a similar program. These included:</p>
+      <ul>
+        <li>Program age</li>
+        <li>Current program size</li>
+        <li>Park region</li>
+        <li>Device location in park</li>
+        <li>Chair type</li>
+        <li>Local adaptive sports programs</li>
+        <li>Other local support</li>
+        <li>Park visitation</li>
+        <li>Staff time for accessibility
+      </ul>
+      <p>I selected the parks with the most established loan programs because they would have the most information to learn from. I then chose six parks that varied across these pivot points in order to provide a comprehensive set of case studies for parks that also had varied settings and contexts. With my interview guide read, I conducted six hour-long interviews with my selected parks.</p>
+
+      <h4>Interview Analysis</h4>
+      <p>My interviews left me with an enormous amount of relevant information, but no structure for how to share it. To process my interviews, I collected “aha moments” and conducted detailed analysis. I filled out a debrief document after each interview, where I quickly wrote down quotes and ideas that stuck out to me as distinctive, new, or that deviated from my current understanding of loan programs. This document allowed me to quickly distill possible points to focus on, while helping keep the associated bias of those heart-skipping quotes and ideas out of my deeper analysis of the material later. After I had conducted all of the interviews, I rewatched each one to fill out my notes and pull out the main ideas and takeaways of the interview.</p>
+      <img src="../images/takeaways_adaptive rec.png" alt="Overall takeaways distilled from case study interviews." class="project-img" />
+      <p class="img-caption">Overall takeaways distilled from case study interviews</p>
+
+      <h3>Ideate</h3>
+      <h4>Shaping Content Into Case Studies</h4>
+      <p>From my journey map for creating a loan program, I knew what questions parks were asking about the process. However, I did not know which format would work best to convey the information. I came up with two possible formats: a Q&A format, which would read almost like the interview itself and address each central question one by one, or a Lessons and Takeaways format, which would give an overview of a loan program and then describe key lessons and takeaways that program had. From consulting with the communications specialists in the accessibility program, I knew that I would create the case studies on the internal NPS SharePoint website, where they could be easily updated and shared and would be the most accessible by viewers with disabilities.</p>
+    
+      <h3>Prototype</h3>
+      <p>I created two prototype case studies, one in the Q&A format, and one in the Lessons and Takeaways format. I conducted research on what typical case studies look like, and made sure to include all relevant information in both prototypes.</p>
+      
+      <h3>Test</h3>
+      <h4>Keeping it Brief and Telling a Story</h4>
+      <p>I created two prototype case studies, one in the Q&A format, and one in the Lessons and Takeaways format. I conducted research on what typical case studies look like, and made sure to include all relevant information in both prototypes.</p>
+      <img src="../images/feedback_adaptive rec.png" alt="Feedback on the Q&A and Lessons and Takeaways case study prototypes from staff members at two parks." class="project-img" />
+      <p class="img-caption">Feedback on the two prototype formats from park staff</p>
+      <p>Both prototypes got positive feedback, with the most notable difference between the two being the length and depth. NPS staff liked the conversational feel of the Q&A format and appreciated the concision of the Lessons and Takeaways format. The most helpful feedback came from my questions on what was missing and what questions the reader was left with. Together with my colleagues in the Office of Outdoor Recreation, we decided to continue with the Lessons and Takeaways format, but incorporate the storytelling feel into the writing of the takeaways and create a new page to go with the case studies that would guide staff members through the initial steps of establishing their own program.</p>
+
+      <h3>Ideate (Again)</h3>
+      <h4>Going Beyond Case Studies</h4>
+      <p>From my initial interviews, research, and prototyping, it became clear that parks had many questions about loan programs, and writing case studies would only be a start. Some questions were too broad to be answered by a set of case studies, like “How many other national parks have a similar program?” Others were so detailed that they would be best answered through an actual conversation rather than a summary case study, including “If a chair is reserved at 2pm and a visitor asks for a chair at 1pm, how is this handled?” And in some of my interviews, staff members with established programs were directly asking for further support. One staff member said “It would be really cool if we could also get a forum of folks who are working with assistive equipment in the national park service…maybe getting everybody on the same call some time to share some ins and outs of what works,” and for visitors, “People want to know where else they can go, what other national parks can they go and take their equipment or where can they rent equipment or use equipment.”</p>
+      <p>I took these ideas back to the Office of Outdoor Recreation and Park Accessibility for Visitors and Employees (PAVE) Program. Together, we brainstormed ways to share what we had learned beyond the case studies.</p>
+      <img src="../images/Ideate-Next-Steps_adaptive rec.png" alt="Brainstormed ideas for sharing beyond case studies." class="project-img" />
+      <p class="img-caption">Brainstormed ideas for sharing beyond the case studies</p>
+      <p>I took these ideas back to the Office of Outdoor Recreation and Park Accessibility for Visitors and Employees (PAVE) Program. Together, we brainstormed ways to share what we had learned beyond the case studies.</p>
+    </div>
+
+    <div class="section">
+      <h2>Conclusion:Creating Products that Address Needs</h2>
+      <p>Many jobs do not have “design” in the title, yet applying design thinking can make the difference between a good and a great product. This project tested my ability to integrate the tools and processes of design in the scope of an existing project work plan. When I approached the project as a design project, I was able to look beyond my original task of writing case studies and understand why those case studies were important, how they fit into a large web of people and resources, and where they were not sufficient support for parks and their visitors engaging in adaptive recreation. The case study documents I created laid the foundation for how the national office of the NPS approaches support for adaptive recreation device loan programs. The loan program map, webinar, and additional presentations we gave have all started to build on that foundation, and future resources created after my fellowship position ends will continue to build robust support for visitors of all abilities to fully experience national parks.</p>
+    </div>
+
+    <div class="section">
+      <h2>Gallery</h2>
+      <div class="gallery">
+        <img src="../images/conference-slide.png" alt="A PowerPoint slide that reads 'Advancing Adaptive Recreation in Parks and on Trails' with a photo of three adaptive cycles in the background." />
+        <img src="../images/adaptive-equipment.jpg" alt="Adaptive recreation equipment" />
+      </div>
+    </div>
+
+    <div class="back-link">
+      <a href="../index.html">← Back to Portfolio</a>
+    </div>
+
+  </div>
+
+</body>
+</html>
