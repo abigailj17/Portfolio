@@ -19,31 +19,25 @@ if (!sheet) {
 // Convert to array of objects using the header row as keys
 const raw = XLSX.utils.sheet_to_json(sheet);
 
+// Helper: parse a comma-separated cell into a clean array
+const parseList = (val) =>
+  (val || "").toString().trim().split(",").map((t) => t.trim()).filter(Boolean);
+
 // --- Transform each row ---
 const resources = raw.map((row, i) => {
   const name = (row["Dataset Name"] || "").trim();
   const link = (row["Link"] || "").trim();
   const notes = (row["Notes"] || "").trim();
-  const tagsRaw = (row["Tags"] || "").toString().trim();
-
-  // Split comma-separated tags into an array, filter out empties
-  const tags = tagsRaw
-    .split(",")
-    .map((t) => t.trim())
-    .filter(Boolean);
+  const topic = parseList(row["Topic"]);
+  const agency = parseList(row["Agency"]);
+  const dataOutput = parseList(row["Data Output"]);
 
   if (!name) {
     console.warn(`Row ${i + 2}: missing Dataset Name, skipping.`);
     return null;
   }
 
-  return {
-    id: i + 1,
-    name,
-    link,
-    notes,
-    tags,
-  };
+  return { id: i + 1, name, link, notes, topic, agency, dataOutput };
 }).filter(Boolean);
 
 // --- Write JSON ---
@@ -52,11 +46,17 @@ fs.writeFileSync(OUTPUT, JSON.stringify(resources, null, 2));
 
 console.log(`Built ${resources.length} resources → ${OUTPUT}`);
 
-// --- Print tag summary ---
-const tagCounts = {};
-resources.forEach((r) => r.tags.forEach((t) => {
-  tagCounts[t] = (tagCounts[t] || 0) + 1;
-}));
-const sorted = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]);
-console.log(`\nTags (${sorted.length} unique):`);
-sorted.forEach(([tag, count]) => console.log(`  ${tag}: ${count}`));
+// --- Print category summaries ---
+const summarize = (label, key) => {
+  const counts = {};
+  resources.forEach((r) => r[key].forEach((t) => {
+    counts[t] = (counts[t] || 0) + 1;
+  }));
+  const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+  console.log(`\n${label} (${sorted.length} unique):`);
+  sorted.forEach(([val, count]) => console.log(`  ${val}: ${count}`));
+};
+
+summarize("Topic", "topic");
+summarize("Agency", "agency");
+summarize("Data Output", "dataOutput");

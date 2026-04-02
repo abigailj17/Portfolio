@@ -4,11 +4,16 @@
     "name": "AARP Livable Communities Map",
     "link": "https://livablemap.aarp.org/?ACSTrackingID=USCDC_2054-DM130085&ACSTrackingLabel=June%202024%20Active%20People%20monthly%20Newsletter&deliveryName=USCDC_2054-DM130085#/view=details",
     "notes": "List of projects funded by AARP to make communities more livable for people of all ages",
-    "tags": [
-      "Maps",
+    "topic": [
       "Livability",
       "Age-Friendly",
       "Equity"
+    ],
+    "agency": [
+      "Nonprofits"
+    ],
+    "dataOutput": [
+      "Maps"
     ]
   },
   {
@@ -16,9 +21,14 @@
     "name": "AllTransit Maps and Metrics",
     "link": "https://alltransit.cnt.org/",
     "notes": "Analyzes transit quality through the social and economic impacts of transit",
-    "tags": [
-      "Maps",
+    "topic": [
       "Transportation"
+    ],
+    "agency": [
+      "Other"
+    ],
+    "dataOutput": [
+      "Maps"
     ]
   },
   {
@@ -26,11 +36,15 @@
     "name": "Appalachian Trail Interactive Map",
     "link": "https://nps.maps.arcgis.com/apps/webappviewer/index.html?id=6298c848ba2a490588b7f6d25453e4e0",
     "notes": "Maps shelters (with photos), vistas, and other assets along the Appalachian Trail",
-    "tags": [
-      "Maps",
+    "topic": [
       "Trails",
-      "NPS",
       "Appalachian Trail"
+    ],
+    "agency": [
+      "NPS"
+    ],
+    "dataOutput": [
+      "Maps"
     ]
   },
   {
@@ -38,10 +52,13 @@
     "name": "ArcGIS Living Atlas of the World",
     "link": "https://livingatlas.arcgis.com/en/home/",
     "notes": "Super comprehensive collection of different mapping data from around the world",
-    "tags": [
-      "Maps",
-      "GIS",
+    "topic": [
       "International"
+    ],
+    "agency": [],
+    "dataOutput": [
+      "Maps",
+      "GIS"
     ]
   },
   {
@@ -49,8 +66,13 @@
     "name": "Candid – Search Organizations",
     "link": "https://candid.org",
     "notes": "Search nonprofits to understand their funding",
-    "tags": [
-      "Nonprofits",
+    "topic": [
+      "Nonprofits"
+    ],
+    "agency": [
+      "Nonprofits"
+    ],
+    "dataOutput": [
       "Funding"
     ]
   },
@@ -59,9 +81,14 @@
     "name": "Car Access Data (National Equity Atlas)",
     "link": "https://nationalequityatlas.org/indicators/Car_access?geo=07000000000427820&breakdown=by-race-ethnicity",
     "notes": "Sub-resource of National Equity Atlas that examines car access",
-    "tags": [
+    "topic": [
       "Equity",
-      "Transportation",
+      "Transportation"
+    ],
+    "agency": [
+      "Nonprofits"
+    ],
+    "dataOutput": [
       "Statistics"
     ]
   },
@@ -70,7 +97,13 @@
     "name": "Data.gov",
     "link": "https://data.gov/",
     "notes": "Government data clearinghouse",
-    "tags": [
+    "topic": [
+      "Statistics"
+    ],
+    "agency": [
+      "Government (other)"
+    ],
+    "dataOutput": [
       "Statistics"
     ]
   },
@@ -79,10 +112,15 @@
     "name": "DataStore – NPS Core Spatial Data Standard (Template & Document)",
     "link": "https://irma.nps.gov/DataStore/Reference/Profile/2237271",
     "notes": "NPS Core Spacial Data Standard",
-    "tags": [
-      "NPS",
-      "GIS",
+    "topic": [
       "Data Standards"
+    ],
+    "agency": [
+      "NPS"
+    ],
+    "dataOutput": [
+      "Data Standards",
+      "GIS"
     ]
   },
   {
@@ -90,8 +128,13 @@
     "name": "Dept. of Commerce – National Travel and Tourism Office Research Portal",
     "link": "https://www.trade.gov/travel-and-tourism-research",
     "notes": "Range of reports, dashboards, and profiles on US travel data",
-    "tags": [
-      "Tourism",
+    "topic": [
+      "Tourism"
+    ],
+    "agency": [
+      "Government (other)"
+    ],
+    "dataOutput": [
       "Statistics"
     ]
   },
@@ -100,10 +143,14 @@
     "name": "Environmental Public Health Data (CDC)",
     "link": "https://ephtracking.cdc.gov/DataExplorer/?ACSTrackingID=DM118916&ACSTrackingLabel=Year-End%20Updates%20from%20The%20Tracking%20Program&deliveryName=DM118916",
     "notes": "",
-    "tags": [
-      "Maps",
-      "Public Health",
+    "topic": [
+      "Public Health"
+    ],
+    "agency": [
       "CDC"
+    ],
+    "dataOutput": [
+      "Maps"
     ]
   },
   {
@@ -111,9 +158,14 @@
     "name": "FEMA Indices and Analytical Tools",
     "link": "https://gis-fema.hub.arcgis.com/pages/indices-and-tools",
     "notes": "CRAZY amount of information on risk, climate resilience, vulnerability, etc.",
-    "tags": [
-      "Climate Change",
+    "topic": [
+      "Climate Change"
+    ],
+    "agency": [
       "FEMA"
+    ],
+    "dataOutput": [
+      "Maps"
     ]
   },
   {
@@ -121,10 +173,17 @@
     "name": "Flood Potential Portal",
     "link": "https://floodpotential.erams.com/docs/?token=JMQlqghJKF",
     "notes": "Lots of data",
-    "tags": [
+    "topic": [
       "Climate Change",
       "Flooding",
       "Water"
+    ],
+    "agency": [
+      "USFS",
+      "Nonprofits"
+    ],
+    "dataOutput": [
+      "Maps"
     ]
   },
   {
@@ -132,10 +191,14 @@
     "name": "Forest Service Maps Page",
     "link": "https://www.fs.usda.gov/visit/maps",
     "notes": "FSGeodata Clearinghouse has directory to all USFS maps. Interactive Visitor Map 2.0 is incredibly comprehensive for trails and trailheads!",
-    "tags": [
-      "Maps",
-      "Trails",
+    "topic": [
+      "Trails"
+    ],
+    "agency": [
       "USFS"
+    ],
+    "dataOutput": [
+      "Maps"
     ]
   },
   {
@@ -143,10 +206,17 @@
     "name": "H+T Affordability Index",
     "link": "https://htaindex.cnt.org/",
     "notes": "Housing and transportation affordability",
-    "tags": [
+    "topic": [
       "Housing",
       "Transportation",
       "Equity"
+    ],
+    "agency": [
+      "Other"
+    ],
+    "dataOutput": [
+      "Maps",
+      "Statistics"
     ]
   },
   {
@@ -154,11 +224,15 @@
     "name": "Large-Scale Solar Projects Map",
     "link": "https://www.usgs.gov/news/national-news-release/usgs-and-lawrence-berkeley-national-laboratory-release-database-and",
     "notes": "Database and interactive map of all large-scale solar energy facilities in the U.S.",
-    "tags": [
-      "Maps",
+    "topic": [
       "Energy",
-      "Climate Change",
+      "Climate Change"
+    ],
+    "agency": [
       "USGS"
+    ],
+    "dataOutput": [
+      "Maps"
     ]
   },
   {
@@ -166,9 +240,14 @@
     "name": "NPS Mortality Data",
     "link": "https://www.nps.gov/orgs/1336/data.htm#:~:text=Key%20Mortality%20Statistics%3A%201%20A%20total%20of%20990,U.S.%20population%20%28844%20deaths%2F100%2C000%20people%29%20%5B2%5D%20More%20items",
     "notes": "",
-    "tags": [
-      "NPS",
+    "topic": [
       "Public Health"
+    ],
+    "agency": [
+      "NPS"
+    ],
+    "dataOutput": [
+      "Statistics"
     ]
   },
   {
@@ -176,7 +255,13 @@
     "name": "National Equity Atlas",
     "link": "https://nationalequityatlas.org/",
     "notes": "",
-    "tags": [
+    "topic": [
+      "Equity"
+    ],
+    "agency": [
+      "Nonprofits"
+    ],
+    "dataOutput": [
       "Equity",
       "Statistics"
     ]
@@ -186,9 +271,14 @@
     "name": "National Household Travel Survey",
     "link": "https://nhts.ornl.gov/",
     "notes": "",
-    "tags": [
+    "topic": [
       "Transportation",
-      "Travel",
+      "Travel"
+    ],
+    "agency": [
+      "USDOT"
+    ],
+    "dataOutput": [
       "Statistics"
     ]
   },
@@ -197,8 +287,13 @@
     "name": "National Land Cover Database (NLCD)",
     "link": "https://www.usgs.gov/centers/eros/science/national-land-cover-database",
     "notes": "Data that describe nationwide land cover and land change over nearly four decades",
-    "tags": [
-      "USGS",
+    "topic": [
+      "Land"
+    ],
+    "agency": [
+      "USGS"
+    ],
+    "dataOutput": [
       "Maps"
     ]
   },
@@ -207,10 +302,14 @@
     "name": "National Rivers Inventory",
     "link": "https://www.nps.gov/subjects/rivers/nationwide-rivers-inventory.htm",
     "notes": "",
-    "tags": [
-      "NPS",
-      "Maps",
+    "topic": [
       "Water"
+    ],
+    "agency": [
+      "NPS"
+    ],
+    "dataOutput": [
+      "Maps"
     ]
   },
   {
@@ -218,10 +317,15 @@
     "name": "National Water and Recreation Trails Map",
     "link": "https://www.nrtapplication.org/trails",
     "notes": "Filterable map of all water and recreation trails",
-    "tags": [
-      "Maps",
+    "topic": [
       "Trails",
       "Water"
+    ],
+    "agency": [
+      "Nonprofits"
+    ],
+    "dataOutput": [
+      "Maps"
     ]
   },
   {
@@ -229,8 +333,14 @@
     "name": "Nonprofit Spending Research Guide",
     "link": "https://guides.loc.gov/nonprofit-sector/form-990#:~:text=The%20990%20is%20a%20public,organization%20or%20from%20the%20IRS.",
     "notes": "Library of Congress research guide on nonprofits",
-    "tags": [
+    "topic": [
       "Nonprofits",
+      "Funding"
+    ],
+    "agency": [
+      "Nonprofits"
+    ],
+    "dataOutput": [
       "Funding"
     ]
   },
@@ -239,9 +349,14 @@
     "name": "PAD-US Public Lands Map",
     "link": "https://www.usgs.gov/programs/gap-analysis-project/science/pad-us-data-overview",
     "notes": "",
-    "tags": [
-      "Maps",
+    "topic": [
+      "Land"
+    ],
+    "agency": [
       "USGS"
+    ],
+    "dataOutput": [
+      "Maps"
     ]
   },
   {
@@ -249,8 +364,13 @@
     "name": "Racial Equity Data Lab",
     "link": "https://nationalequityatlas.org/lab#tools",
     "notes": "Helps with creating visualizations; sub-resource of National Equity Atlas",
-    "tags": [
-      "Equity",
+    "topic": [
+      "Equity"
+    ],
+    "agency": [
+      "Nonprofits"
+    ],
+    "dataOutput": [
       "Statistics"
     ]
   },
@@ -259,10 +379,15 @@
     "name": "Rails to Trails Conservancy",
     "link": "https://www.railstotrails.org/research/",
     "notes": "Rail trail maps, research projects, BikeAble planner, etc.",
-    "tags": [
-      "Maps",
+    "topic": [
       "Trails",
       "Biking"
+    ],
+    "agency": [
+      "Nonprofits"
+    ],
+    "dataOutput": [
+      "Maps"
     ]
   },
   {
@@ -270,20 +395,28 @@
     "name": "TRAILS Decision Support Tool (USGS)",
     "link": "https://www.usgs.gov/tools/trails-trail-routing-analysis-and-information-linkage-system",
     "notes": "The trail planning tool (TRAILS) is only available on request. Target users are those involved in the initial planning of new trails or improvements to existing trail routes or systems that would eventually be available in the public domain. Typically, participants work either directly for government land management agencies or partner with government land management agencies.",
-    "tags": [
-      "Trails",
+    "topic": [
+      "Trails"
+    ],
+    "agency": [
       "USGS"
-    ]
+    ],
+    "dataOutput": []
   },
   {
     "id": 27,
     "name": "The Nature Conservancy Resilient Land Mapping Tool",
     "link": "https://www.maps.tnc.org/resilientland/",
     "notes": "For conservation planning with climate change in mind",
-    "tags": [
-      "Maps",
+    "topic": [
       "Climate Change",
       "Conservation"
+    ],
+    "agency": [
+      "Nonprofits"
+    ],
+    "dataOutput": [
+      "Maps"
     ]
   },
   {
@@ -291,20 +424,28 @@
     "name": "U.N. Tourism Data Dashboard",
     "link": "https://www.unwto.org/tourism-data/un-tourism-tourism-dashboard",
     "notes": "Statistics and insights on key indicators for inbound and outbound tourism at global, regional, and national levels",
-    "tags": [
+    "topic": [
       "Tourism",
       "International"
-    ]
+    ],
+    "agency": [
+      "United Nations"
+    ],
+    "dataOutput": []
   },
   {
     "id": 29,
     "name": "USGS Trails Explorer",
     "link": "https://www.usgs.gov/tools/trails-explorer",
     "notes": "",
-    "tags": [
-      "Maps",
-      "Trails",
+    "topic": [
+      "Trails"
+    ],
+    "agency": [
       "USGS"
+    ],
+    "dataOutput": [
+      "Maps"
     ]
   },
   {
@@ -312,9 +453,15 @@
     "name": "Wilderness Connect – Wilderness Locator Map",
     "link": "https://arcg.is/1GCjnS",
     "notes": "",
-    "tags": [
-      "Maps",
-      "Wilderness"
+    "topic": [
+      "Wilderness",
+      "Trails"
+    ],
+    "agency": [
+      "Other"
+    ],
+    "dataOutput": [
+      "Maps"
     ]
   },
   {
@@ -322,9 +469,15 @@
     "name": "Work Zone Data Initiative",
     "link": "https://www.transportation.gov/av/data/wzdx",
     "notes": "Enables infrastructure owners and operators (IOOs) to make harmonized work zone data available for third party use.",
-    "tags": [
+    "topic": [
       "Transportation",
       "Infrastructure"
+    ],
+    "agency": [
+      "USDOT"
+    ],
+    "dataOutput": [
+      "Statistics"
     ]
   }
 ]
