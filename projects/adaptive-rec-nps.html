@@ -182,6 +182,71 @@
       margin-bottom: 1.5rem;
     }
 
+    /* Design process step layout */
+    .process-steps-container {
+      margin-top: 1.5rem;
+    }
+    .process-step {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      margin-bottom: 0;
+    }
+    .process-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      width: 100px;
+      padding-top: 0.2rem;
+      padding-bottom: 1.5rem;
+    }
+    .step-name {
+      font-family: "Caudex", serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #063f0d;
+      text-align: center;
+      margin-bottom: 0.6rem;
+    }
+    .process-step.last-step .step-line::after {
+      display: none;
+    }
+    .process-content {
+      padding-bottom: 2.5rem;
+      padding-top: 0.5rem;
+      flex: 1;
+      min-width: 0;
+    }
+    .process-step:nth-child(odd) {
+      position: relative;
+      padding: 1rem 1rem 0 1rem;
+    }
+    .process-step:nth-child(odd)::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      background: #f5fff7;
+      z-index: -1;
+    }
+
+    @media (max-width: 700px) {
+      .process-step {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .process-label {
+        flex-direction: row;
+        width: 100%;
+        gap: 0.75rem;
+      }
+      .step-line { display: none; }
+    }
+
     /* Image with caption side by side */
     .img-caption-row {
       display: flex;
@@ -300,65 +365,116 @@
     <div class="section">
       <h2>Design Process: Empathize, Define, Ideate, Prototype, Test</h2>
 
-      <h3>Empathize</h3>
-      <h4>Initial Interviews</h4>
-      <p>I started this project as I was also starting my time with the National Park Service. To gain a broad understanding of how mobility devices show up in the agency, I created a stakeholder map with the main categories of managers, users, non-profit advocates, designers/engineers, and trainers. I then conducted five interviews with members of this map to understand how NPS staff learn and interact with adaptive recreation generally, as well as scoping calls with three parks who have established adaptive recreation device loan programs to learn more.</p>
-      <div class="img-caption-row">
-        <img src="../images/Stakeholder-map_adaptive rec.png" alt="Stakeholder map with 'Mobility Devices' at the center and the main categories of managers, users, non-profit advocates, designers/engineers, and trainers (map is intentionally blurred to preserve anonymity of names)" />
-        <p class="img-caption">Stakeholder map with "Mobility Devices" at the center and the main categories of managers, users, non-profit advocates, designers/engineers, and trainers (map is intentionally blurred to preserve anonymity of names)</p>
+      <div class="process-steps-container">
+
+        <!-- Empathize -->
+        <div class="process-step">
+          <div class="process-label">
+            <span class="step-name">Empathize</span>
+            <div class="step-line"></div>
+          </div>
+          <div class="process-content">
+            <h4>Initial Interviews</h4>
+            <p>I started this project as I was also starting my time with the National Park Service. To gain a broad understanding of how mobility devices show up in the agency, I created a stakeholder map with the main categories of managers, users, non-profit advocates, designers/engineers, and trainers. I then conducted five interviews with members of this map to understand how NPS staff learn and interact with adaptive recreation generally, as well as scoping calls with three parks who have established adaptive recreation device loan programs to learn more.</p>
+            <div class="img-caption-row">
+              <img src="../images/Stakeholder-map_adaptive%20rec.png" alt="Stakeholder map with 'Mobility Devices' at the center and the main categories of managers, users, non-profit advocates, designers/engineers, and trainers (map is intentionally blurred to preserve anonymity of names)" />
+              <p class="img-caption">Stakeholder map with “Mobility Devices" at the center and the main categories of managers, users, non-profit advocates, designers/engineers, and trainers (map is intentionally blurred to preserve anonymity of names)</p>
+            </div>
+            <h4>Research on Existing Programs</h4>
+            <p>In order to determine which loan programs to write case studies on, I needed a list of existing programs! I conducted background research through focused Google searches and by reviewing the websites of parks who had previously engaged with accessibility work to compile an initial list of 26 parks that had some sort of loan program for an adaptive device for recreation.</p>
+          </div>
+        </div>
+
+        <!-- Define -->
+        <div class="process-step">
+          <div class="process-label">
+            <span class="step-name">Define</span>
+            <div class="step-line"></div>
+          </div>
+          <div class="process-content">
+            <h4>Asking the Right Questions (and the Right Parks)</h4>
+            <p>After conducting initial research, I was ready to create my interview guide for case studies on adaptive recreation devices. For this task, I jumped to the “Define" stage of the process and created a journey map for parks establishing loan programs. From this timeline, I was able to define what questions I needed to ask parks to better understand their programs as well as distill what questions parks would ask when they were thinking about starting a program.</p>
+            <img src="../images/journey-map-and-questions_adaptive%20rec.png" alt="A journey map for the steps in creating an adaptive recreation device loan program, used to create questions for parks with current programs and parks starting a program." class="project-img" />
+            <p class="img-caption">A journey map for the steps in creating an adaptive recreation device loan program (“The Process”), which was used to create “Questions for Parks with Current Programs” and “Questions for Parks Starting a Program.”</p>
+            <p>I brainstormed with my colleagues to build off these questions, then selected the questions that were most essential to understanding the loan programs I would interview.</p>
+            <p>I also used the journey map and associated questions to define nine key “pivot points” for parks with existing programs. These included:</p>
+            <ul>
+              <li>Program age</li>
+              <li>Current program size</li>
+              <li>Park region</li>
+              <li>Device location in park</li>
+              <li>Chair type</li>
+              <li>Local adaptive sports programs</li>
+              <li>Other local support</li>
+              <li>Park visitation</li>
+              <li>Staff time for accessibility</li>
+            </ul>
+            <p>I selected six parks that varied across these pivot points and conducted six hour-long interviews.</p>
+            <h4>Interview Analysis</h4>
+            <p>My interviews left me with an enormous amount of relevant information, but no structure for how to share it. To process my interviews, I collected “aha moments” and conducted detailed analysis. I filled out a debrief document after each interview, where I quickly wrote down quotes and ideas that stuck out to me as distinctive, new, or that deviated from my current understanding of loan programs. After I had conducted all of the interviews, I rewatched each one to fill out my notes and pull out the main ideas and takeaways.</p>
+            <img src="../images/takeaways_adaptive%20rec.png" alt="Overall takeaways distilled from case study interviews." class="project-img" />
+            <p class="img-caption">Overall takeaways distilled from case study interviews</p>
+          </div>
+        </div>
+
+        <!-- Ideate -->
+        <div class="process-step">
+          <div class="process-label">
+            <span class="step-name">Ideate</span>
+            <div class="step-line"></div>
+          </div>
+          <div class="process-content">
+            <h4>Shaping Content Into Case Studies</h4>
+            <p>From my journey map for creating a loan program, I knew what questions parks were asking about the process. However, I did not know which format would work best to convey the information. I came up with two possible formats: a Q&A format, which would read almost like the interview itself and address each central question one by one, or a Lessons and Takeaways format, which would give an overview of a loan program and then describe key lessons and takeaways. I knew I would create the case studies on the internal NPS SharePoint website, where they could be easily updated, shared, and accessed by viewers with disabilities.</p>
+          </div>
+        </div>
+
+        <!-- Prototype -->
+        <div class="process-step">
+          <div class="process-label">
+            <span class="step-name">Prototype</span>
+            <div class="step-line"></div>
+          </div>
+          <div class="process-content">
+            <h4>A Tale of Two Case Studies</h4>
+            <p>I created two prototype case studies, one in the Q&A format and one in the Lessons and Takeaways format. I conducted research on what typical case studies look like and made sure to include all relevant information in both prototypes.</p>
+          </div>
+        </div>
+
+        <!-- Test -->
+        <div class="process-step">
+          <div class="process-label">
+            <span class="step-name">Test</span>
+            <div class="step-line"></div>
+          </div>
+          <div class="process-content">
+            <h4>Keeping it Brief and Telling a Story</h4>
+            <p>I conducted A/B testing with staff from two parks considering loan programs.</p>
+            <div class="img-caption-row">
+              <img src="../images/feedback_adaptive%20rec.png" alt="Feedback on the Q&A and Lessons and Takeaways case study prototypes from staff members at two parks." />
+              <p class="img-caption">Feedback on the Q&A and Lessons and Takeaways case study prototypes from staff members at two parks who were considering starting their own loan programs.</p>
+            </div>
+            <p>Both prototypes got positive feedback. NPS staff liked the conversational feel of the Q&A format and appreciated the concision of the Lessons and Takeaways format. Together with my colleagues, we decided to continue with the Lessons and Takeaways format, but incorporate a storytelling feel and create a new page to guide staff through initial steps.</p>
+          </div>
+        </div>
+
+        <!-- Ideate (Again) -->
+        <div class="process-step last-step">
+          <div class="process-label">
+            <span class="step-name">Ideate (Again)</span>
+            <div class="step-line"></div>
+          </div>
+          <div class="process-content">
+            <h4>Going Beyond Case Studies</h4>
+            <p>From my initial interviews, research, and prototyping, it became clear that parks had many questions about loan programs, and writing case studies would only be a start. Some questions were too broad to be answered by a set of case studies, like “How many other national parks have a similar program?" Others were so detailed that they would be best answered through an actual conversation. And in some of my interviews, staff members with established programs were directly asking for further support.</p>
+            <p>I took these ideas back to the Office of Outdoor Recreation and PAVE Program. Together, we brainstormed ways to share what we had learned beyond the case studies.</p>
+            <img src="../images/Ideate-Next-Steps_adaptive%20rec.png" alt="Brainstormed ideas for sharing beyond case studies." class="project-img" />
+            <p class="img-caption">Brainstormed ideas for sharing beyond the case studies</p>
+            <p>We narrowed to two deliverables: a webinar with a case study park and a public map on NPS.gov. I also presented at the National Outdoor Recreation Conference, NRPA Conference, NPS Youth Programs community, and Transportation Research Board AEP20 committee.</p>
+          </div>
+        </div>
+
       </div>
-
-      <h4>Research on Existing Programs</h4>
-      <p>In order to determine which loan programs to write case studies on, I needed a list of existing programs! I conducted background research through focused Google searches and by reviewing the websites of parks who had previously engaged with accessibility work to compile an initial list of 26 parks that had some sort of loan program for an adaptive device for recreation.</p>
-
-      <h3>Define</h3>
-      <h4>Asking the Right Questions (and the Right Parks)</h4>
-      <p>After conducting initial research, I was ready to create my interview guide for case studies on adaptive recreation devices. For this task, I jumped to the “Define” stage of the process and created a journey map for parks establishing loan programs. From this timeline, I was able to define what questions I needed to ask parks to better understand their programs as well as distill what questions parks would ask when they were thinking about starting a program.</p>
-      <img src="../images/journey-map-and-questions_adaptive rec.png" alt="A journey map for the steps in creating an adaptive recreation device loan program, used to create questions for parks with current programs and parks starting a program." class="project-img" />
-      <p class="img-caption">A journey map for the steps in creating an adaptive recreation device loan program ("The Process"), which was used to create the subsequent "Questions for Parks with Current Programs" that would inform my interview questions and "Questions for Parks Starting a Program," which informed how I presented my case studies.</p>
-      <p>I brainstormed with my colleagues to build off these questions, then selected the questions that were most essential to understanding the loan programs I would interview.</p>
-      <p>I also used the journey map and associated questions to define nine key considerations or “pivot points” for parks with existing programs that make their loan program distinctive and more or less relevant for a park that is hoping to start a similar program. These included:</p>
-      <ul>
-        <li>Program age</li>
-        <li>Current program size</li>
-        <li>Park region</li>
-        <li>Device location in park</li>
-        <li>Chair type</li>
-        <li>Local adaptive sports programs</li>
-        <li>Other local support</li>
-        <li>Park visitation</li>
-        <li>Staff time for accessibility
-      </ul>
-      <p>I selected the parks with the most established loan programs because they would have the most information to learn from. I then chose six parks that varied across these pivot points in order to provide a comprehensive set of case studies for parks that also had varied settings and contexts. With my interview guide read, I conducted six hour-long interviews with my selected parks.</p>
-
-      <h4>Interview Analysis</h4>
-      <p>My interviews left me with an enormous amount of relevant information, but no structure for how to share it. To process my interviews, I collected “aha moments” and conducted detailed analysis. I filled out a debrief document after each interview, where I quickly wrote down quotes and ideas that stuck out to me as distinctive, new, or that deviated from my current understanding of loan programs. This document allowed me to quickly distill possible points to focus on, while helping keep the associated bias of those heart-skipping quotes and ideas out of my deeper analysis of the material later. After I had conducted all of the interviews, I rewatched each one to fill out my notes and pull out the main ideas and takeaways of the interview.</p>
-      <img src="../images/takeaways_adaptive rec.png" alt="Overall takeaways distilled from case study interviews." class="project-img" />
-      <p class="img-caption">Overall takeaways distilled from case study interviews. These takeaways were used to shape the information included in the case studies and were shared at two conferences and two additional presentations.</p>
-
-      <h3>Ideate</h3>
-      <h4>Shaping Content Into Case Studies</h4>
-      <p>From my journey map for creating a loan program, I knew what questions parks were asking about the process. However, I did not know which format would work best to convey the information. I came up with two possible formats: a Q&A format, which would read almost like the interview itself and address each central question one by one, or a Lessons and Takeaways format, which would give an overview of a loan program and then describe key lessons and takeaways that program had. From consulting with the communications specialists in the accessibility program, I knew that I would create the case studies on the internal NPS SharePoint website, where they could be easily updated and shared and would be the most accessible by viewers with disabilities.</p>
-    
-      <h3>Prototype</h3>
-      <p>I created two prototype case studies, one in the Q&A format, and one in the Lessons and Takeaways format. I conducted research on what typical case studies look like, and made sure to include all relevant information in both prototypes.</p>
-      
-      <h3>Test</h3>
-      <h4>Keeping it Brief and Telling a Story</h4>
-      <p>I created two prototype case studies, one in the Q&A format, and one in the Lessons and Takeaways format. I conducted research on what typical case studies look like, and made sure to include all relevant information in both prototypes.</p>
-      <div class="img-caption-row">
-        <img src="../images/feedback_adaptive rec.png" alt="Feedback on the Q&A and Lessons and Takeaways case study prototypes from staff members at two parks." />
-        <p class="img-caption">Feedback on the Q&A and Lessons and Takeaways case study prototypes from staff members at two parks who were considering starting their own loan programs.</p>
-      </div>
-      <p>Both prototypes got positive feedback, with the most notable difference between the two being the length and depth. NPS staff liked the conversational feel of the Q&A format and appreciated the concision of the Lessons and Takeaways format. The most helpful feedback came from my questions on what was missing and what questions the reader was left with. Together with my colleagues in the Office of Outdoor Recreation, we decided to continue with the Lessons and Takeaways format, but incorporate the storytelling feel into the writing of the takeaways and create a new page to go with the case studies that would guide staff members through the initial steps of establishing their own program.</p>
-
-      <h3>Ideate (Again)</h3>
-      <h4>Going Beyond Case Studies</h4>
-      <p>From my initial interviews, research, and prototyping, it became clear that parks had many questions about loan programs, and writing case studies would only be a start. Some questions were too broad to be answered by a set of case studies, like “How many other national parks have a similar program?” Others were so detailed that they would be best answered through an actual conversation rather than a summary case study, including “If a chair is reserved at 2pm and a visitor asks for a chair at 1pm, how is this handled?” And in some of my interviews, staff members with established programs were directly asking for further support. One staff member said “It would be really cool if we could also get a forum of folks who are working with assistive equipment in the national park service…maybe getting everybody on the same call some time to share some ins and outs of what works,” and for visitors, “People want to know where else they can go, what other national parks can they go and take their equipment or where can they rent equipment or use equipment.”</p>
-      <p>I took these ideas back to the Office of Outdoor Recreation and Park Accessibility for Visitors and Employees (PAVE) Program. Together, we brainstormed ways to share what we had learned beyond the case studies.</p>
-      <img src="../images/Ideate-Next-Steps_adaptive rec.png" alt="Brainstormed ideas for sharing beyond case studies." class="project-img" />
-      <p class="img-caption">Brainstormed ideas for sharing beyond the case studies</p>
-      <p>I took these ideas back to the Office of Outdoor Recreation and Park Accessibility for Visitors and Employees (PAVE) Program. Together, we brainstormed ways to share what we had learned beyond the case studies.</p>
     </div>
 
     <div class="section">
