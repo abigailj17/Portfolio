@@ -25,19 +25,35 @@
       /* Nav */
       nav {
         background: #063f0d;
-        padding: 1rem 2rem;
+        padding: 1rem;
         position: sticky;
         top: 0;
-        z-index: 100;
+        z-index: 1000;
         box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
       }
       nav a {
         color: #f5fff7;
         text-decoration: none;
-        font-size: 1rem;
-        transition: color 0.2s;
+        font-weight: 500;
+        transition: color 0.3s;
       }
       nav a:hover { color: #a8d5b5; }
+      .nav-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: #f5fff7;
+        font-size: 1.8rem;
+        cursor: pointer;
+        padding: 0;
+        line-height: 1;
+      }
 
       /* Page header */
       .page-header {
@@ -227,6 +243,31 @@
       footer p { color: #fff; }
 
       @media (max-width: 768px) {
+        nav {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0.75rem 1.25rem;
+        }
+        .nav-toggle { display: block; }
+        nav ul {
+          display: none;
+          flex-direction: column;
+          text-align: center;
+          gap: 0;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background: #063f0d;
+          padding: 0.5rem 0 1rem;
+          box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+        }
+        nav ul.open { display: flex; }
+        nav ul li a {
+          display: block;
+          padding: 0.6rem 1rem;
+        }
         .db-layout {
           flex-direction: column;
           padding-right: 2rem;
@@ -242,12 +283,19 @@
   </head>
   <body>
     <nav>
-      <a href="index.html">← Back to Portfolio</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      <ul id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
     </nav>
 
     <div class="page-header">
       <h1>Resource Database</h1>
-      <p>I come across lots of cool data and maps in my work, so why keep them tucked away in a spreadsheet? Take a look around if you also like cool data that has anything to do with land use, recreation, and climate</p>
+      <p>I come across lots of cool data and maps in my work, so why keep them tucked away in a spreadsheet? Take a look around if you also like data that has anything to do with land use, recreation, and climate.</p>
     </div>
 
     <div class="db-layout">
@@ -403,6 +451,10 @@
           );
         });
         applyFilters();
+      });
+
+      document.getElementById("nav-toggle").addEventListener("click", () => {
+        document.getElementById("nav-links").classList.toggle("open");
       });
     </script>
   </body>
