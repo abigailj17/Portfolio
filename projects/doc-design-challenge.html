@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOC Design Challenge - Abigail Johnson</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caudex:wght@400;700&family=Nunito:wght@300;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Caudex", serif;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    p {
+      font-family: "Avenir", "Nunito", sans-serif;
+      font-weight: 300;
+      font-size: 1.125rem;
+      color: #000;
+    }
+
+    /* Nav */
+    nav {
+      background: #063f0d;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    nav a {
+      color: #f5fff7;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #a8d5b5; }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #f5fff7;
+      font-size: 1.8rem;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      background-image: url('../images/DOC-Design/intro-event.jpeg');
+      background-size: cover;
+      background-position: center 40%;
+      color: #f5fff7;
+      padding: 8rem 3rem 4rem;
+      text-align: left;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(6,63,13,0) 0%, rgba(6,63,13,0) 10%, rgba(6,63,13,0.85) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      white-space: nowrap;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      margin-bottom: 0.75rem;
+    }
+    .hero .type-label {
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #a8d5b5;
+    }
+
+    /* Two-column intro layout */
+    .intro-layout {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 3rem 2rem 0;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .meta-sidebar {
+      background: #f5fff7;
+      border: 1px solid #d4e8d8;
+      border-radius: 8px;
+      padding: 1.5rem;
+      position: sticky;
+      top: 80px;
+    }
+    .meta-item { margin-bottom: 1.2rem; }
+    .meta-item:last-child { margin-bottom: 0; }
+    .meta-item h4 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #063f0d;
+      margin-bottom: 0.25rem;
+    }
+    .meta-item p {
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    /* Main content */
+    .content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 2rem 5rem;
+    }
+
+    /* HMW callout */
+    .hmw {
+      border-left: 4px solid #063f0d;
+      padding: 1rem 1.5rem;
+      margin: 2.5rem 0;
+      background: #f5fff7;
+      border-radius: 0 6px 6px 0;
+      font-size: 1.05rem;
+      color: #063f0d;
+      font-style: italic;
+    }
+
+    /* Sections */
+    .section { margin-bottom: 3rem; }
+    .section h2 {
+      font-size: 1.5rem;
+      color: #063f0d;
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid #d4e8d8;
+    }
+    .section h3 {
+      font-size: 1.4rem;
+      color: #063f0d;
+      margin: 1.5rem 0 0.5rem;
+    }
+    .section ul {
+      font-family: "Avenir", "Nunito", sans-serif;
+      font-weight: 300;
+      font-size: 1.125rem;
+      color: #000;
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .section ul li {
+      margin-bottom: 0.4rem;
+    }
+
+    .section h4 {
+      font-family: "Avenir", "Nunito", sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #000;
+      margin: 1.2rem 0 0.4rem;
+    }
+    .section p { margin-bottom: 0.9rem; }
+
+    /* Result list */
+    .result-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      padding-left: 0;
+    }
+    .result-list li {
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .result-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #063f0d;
+    }
+    .result-list a {
+      color: #063f0d;
+      text-decoration: underline;
+    }
+
+    /* Project images */
+    .project-img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin: 1.5rem 0;
+    }
+    .img-caption {
+      font-size: 0.82rem;
+      color: #666;
+      font-style: italic;
+      margin-top: -1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Design process step layout */
+    .process-steps-container {
+      margin-top: 1.5rem;
+    }
+    .process-step {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      margin-bottom: 0;
+    }
+    .process-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      width: 100px;
+      padding-top: 0.2rem;
+      padding-bottom: 1.5rem;
+    }
+    .step-name {
+      font-family: "Caudex", serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #063f0d;
+      text-align: center;
+      margin-bottom: 0.6rem;
+    }
+    .process-step.last-step .step-line::after {
+      display: none;
+    }
+    .process-content {
+      padding-bottom: 2.5rem;
+      padding-top: 0.5rem;
+      flex: 1;
+      min-width: 0;
+    }
+    .process-step:nth-child(odd) {
+      position: relative;
+      padding: 1rem 1rem 0 1rem;
+    }
+    .process-step:nth-child(odd)::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      background: #f5fff7;
+      z-index: -1;
+    }
+
+    @media (max-width: 700px) {
+      .process-step {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .process-label {
+        flex-direction: row;
+        width: 100%;
+        gap: 0.75rem;
+      }
+      .step-line { display: none; }
+    }
+
+    /* Image with caption side by side */
+    .img-caption-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .img-caption-row img {
+      width: 55%;
+      flex-shrink: 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .img-caption-row .img-caption {
+      font-size: 0.95rem;
+      color: #444;
+      font-style: italic;
+      margin: 0;
+      padding-top: 0.5rem;
+    }
+
+    /* Two-image side by side */
+    .img-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .img-pair img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Bottom gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Back link footer */
+    .back-link {
+      text-align: center;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid #eee;
+    }
+    .back-link a {
+      color: #063f0d;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    .back-link a:hover { text-decoration: underline; }
+
+    @media (max-width: 700px) {
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1.25rem;
+      }
+      .nav-toggle { display: block; }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        gap: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #063f0d;
+        padding: 0.5rem 0 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+      }
+      nav ul.open { display: flex; }
+      nav ul li a {
+        display: block;
+        padding: 0.6rem 1rem;
+      }
+      .hero { padding: 4rem 1.5rem 3rem; }
+      .hero-content { white-space: normal; }
+      .hero h1 { font-size: 1.8rem; }
+      .gallery { grid-template-columns: 1fr; }
+      .img-pair { grid-template-columns: 1fr; }
+      .intro-layout { grid-template-columns: 1fr; }
+      .meta-sidebar { position: static; }
+      .img-caption-row { flex-direction: column; }
+      .img-caption-row img { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+    <ul id="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../resources.html">Resources</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Dartmouth Outing Club Design Challenge</h1>
+      <p class="type-label">Experience Design</p>
+    </div>
+  </div>
+
+  <div class="intro-layout">
+    <div class="intro-main">
+      <div class="hmw">
+        How might we make the Dartmouth Outing Club a more inclusive and welcoming space for anyone who might have an interest in the outdoors?
+      </div>
+      <div class="section">
+        <h2>Starting Challenge</h2>
+        <p>The Dartmouth Outing Club is the oldest and largest collegiate outing club in the country, serving 1,500+ students. Demographic surveys show the club doesn't reflect campus makeup, particularly racially and socioeconomically. Both higher education and outdoor recreation have histories of systematically excluding marginalized communities.</p>
+      </div>
+    </div>
+    <aside class="meta-sidebar">
+      <div class="meta-item">
+        <h4>Time</h4>
+        <p>2 months</p>
+      </div>
+      <div class="meta-item">
+        <h4>Team</h4>
+        <p>Abigail Johnson (design lead), Alex Wells, Andrew Sasser, Ashley Brown, Ben Brody, Josh Ocampo, Kat Yang</p>
+        <p style="margin-top: 0.4rem;">Tara Harrington (design mentor)</p>
+      </div>
+      <div class="meta-item">
+        <h4>Deliverables</h4>
+        <p>DOC Intro Event, Local Leader leadership position</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="content">
+
+    <div class="section">
+      <h2>My Role</h2>
+      <p>I initiated, planned, and managed this project with mentorship from Design For Change USA. I worked with a team of six other student designers.</p>
+    </div>
+
+    <div class="section">
+      <h2>The Result: Two New Opportunities for Engagement</h2>
+      <ul class="result-list">
+        <li><strong>DOC Intro Event</strong> — The DOC Intro Event takes place in the fall term and was designed to provide an easy jumping-off point for understanding the DOC and what it offers. We gave an overview of the DOC subclubs and structure, introduced the student officers who run the club, and talked about how to get involved, particularly for people who have not done these sorts of activities much before. The event had nearly 200 attendees and has been run for three consecutive years since we began it in 2020.</li>
+        <li><strong>Local Leader position</strong> — The Local Leader position provides a new level of membership in the DOC and is an option for students who want to take on a leadership role but may not have interest in leading longer trips. This leadership position requires around 16 hours of training rather than the closer to 50–70 hours it takes to obtain other leadership positions. Local Leaders can become meaningfully involved in outdoor leadership without making the DOC a primary extracurricular, and can then lead trips that help other students explore the local nature around Dartmouth.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Design Process: Feel, Imagine, Do, Share</h2>
+      <p>We used Design for Change's approach to the design process, engaging in the steps of Feel, Imagine, Do, Share.</p>
+
+      <div class="process-steps-container">
+
+        <!-- Feel -->
+        <div class="process-step">
+          <div class="process-label">
+            <span class="step-name">Feel</span>
+            <div class="step-line"></div>
+          </div>
+          <div class="process-content">
+            <h4>Background Research</h4>
+            <p>We used Facts-Questions-Quotes-Connections charts to gather information and thoughts from outside resources on equity and inclusion in the outdoors, including podcasts, videos, and articles. We also filled out this chart ourselves so we could pool our collective knowledge and learn where each of us was starting from regarding these issues.</p>
+            <div class="img-pair">
+              <img src="https://static.wixstatic.com/media/5bebec_f80c730c3ab445bf862d8d7303e16524~mv2.png" alt="Facts-Questions-Quotes-Connections chart from background research on equity and inclusion in the outdoors" />
+              <img src="https://static.wixstatic.com/media/5bebec_2842d76e305644bab52bee7c8c7c9fd7~mv2.png" alt="Facts-Questions-Quotes-Connections chart from background research on equity and inclusion in the outdoors" />
+            </div>
+            <p class="img-caption" style="margin-top: 0;">Facts-Questions-Quotes-Connections charts from our background research</p>
+
+            <h4>User Research</h4>
+            <p>We used our findings from background research to brainstorm interview questions and tested those questions by interviewing each other. We then conducted over 24 interviews with Dartmouth students and community stakeholders. We talked with student leaders and participants in the DOC, but we also emailed the entire undergraduate student body and talked with students who had not been involved in the club before.</p>
+            <p>We used a number of design tools to thoroughly analyze our insights from interviews. A journey map helped us understand what a typical path might look like for getting involved in the DOC, and creating three personas allowed us to examine how those paths might differ based on people's identities and backgrounds.</p>
+            <div class="img-pair">
+              <img src="https://static.wixstatic.com/media/5bebec_0615288c79fa41b58fc86f54aeb59d39~mv2.png" alt="Journey map for getting involved in the Dartmouth Outing Club" />
+              <img src="https://static.wixstatic.com/media/5bebec_b8bb9250888148a8b590b52bd7a9dd14~mv2.png" alt="Three personas representing different student paths and backgrounds in relation to the DOC" />
+            </div>
+            <p class="img-caption" style="margin-top: 0;">Journey map and personas developed from interview research</p>
+            <p>We also used Design for Change's Root Cause Analysis framework to connect the symptoms of the problems we uncovered with their root causes. These tools and analyses led us to narrow down on our central How Might We question: "How might we reframe the goals of the DOC to allow for multiple definitions of successful membership in order to improve accessibility and inclusivity, particularly in a world with online social events and local trips only?"</p>
+          </div>
+        </div>
+
+        <!-- Imagine -->
+        <div class="process-step">
+          <div class="process-label">
+            <span class="step-name">Imagine</span>
+            <div class="step-line"></div>
+          </div>
+          <div class="process-content">
+            <h4>Brainstorming and Narrowing Ideas</h4>
+            <p>We held two brainstorming sessions with a total of nine prompts to generate a wide range of ideas, then narrowed down our favorites with dot-voting and discussion. After storyboarding these ideas, we took them to student leaders to get feedback and think through the details of their feasibility.</p>
+            <p>Our biggest challenge was balancing our ideas with our constraints. As the summer went on, it became apparent that we were designing not only for inclusivity, but for inclusivity during a pandemic. In hindsight, we would have gained a lot from asking people about what worked well and what needed improvement in their interactions with clubs and communities during the remote spring term. We also held out hope for a long time that one of our ideas — an intro event for the DOC — could be held in person. Once Dartmouth confirmed it would be holding classes remotely for the fall term, we shifted our focus to solutions that were entirely virtual or compatible with campus COVID guidance.</p>
+            <p>After gathering feedback, we narrowed down our two final deliverables: a fall intro event for the DOC, and a new leadership position that would function as a general leader.</p>
+          </div>
+        </div>
+
+        <!-- Do -->
+        <div class="process-step">
+          <div class="process-label">
+            <span class="step-name">Do</span>
+            <div class="step-line"></div>
+          </div>
+          <div class="process-content">
+            <h4>Building Into Existing Structure</h4>
+            <p>It was key that we built our solutions into the existing structure of the Dartmouth Outing Club. For our new leadership position, we consulted with our Outdoor Programs advisors, the Student Risk Management committee, and DOC club chairs while writing up our documentation. We learned that if trips were run closer to the college and didn't venture into the backcountry, leaders would be allowed to lead trips with a regular CPR/First Aid med cert rather than a wilderness one — cutting hours off of the total time needed for training. We settled on calling the position a "Local Leader."</p>
+            <p>For the intro event, we worked with the current DOC club officers to plan and deliver a presentation that gave a comprehensive overview of the DOC and detailed the ways to get involved even if you had minimal outdoor experience.</p>
+          </div>
+        </div>
+
+        <!-- Share -->
+        <div class="process-step last-step">
+          <div class="process-label">
+            <span class="step-name">Share</span>
+            <div class="step-line"></div>
+          </div>
+          <div class="process-content">
+            <h4>Embedding Our Work for the Long Term</h4>
+            <p>We presented our work to the DOC at the termly inclusivity event. We also wrote the details on how to run the inclusivity event into the DOC officer manuals and moved all of our Local Leader materials into the DOC shared drives to be accessed in the future. I became the Local Leader coordinator for the next year along with another student. We ran the trainings, onboarded new leaders, and sent emails outreaching to potential local leaders across campus.</p>
+            <p>The DOC Intro Event has been run for three consecutive years now, and the Local Leader position still exists with two new student coordinators and Outdoor Programs advising.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Gallery</h2>
+      <div class="gallery">
+        <img src="https://static.wixstatic.com/media/5bebec_5ec3d6f0801b468fbcb7877aa5a6963c~mv2.png" alt="Screenshot of the DOC Intro Event presentation" />
+        <img src="https://static.wixstatic.com/media/5bebec_b5148d7d50a44691a49d3fd818b6745d~mv2.jpeg" alt="Photo from the DOC Intro Event" />
+        <img src="https://static.wixstatic.com/media/5bebec_8dc60ad366564be6ab4c11fec811ac47~mv2.jpeg" alt="Students on a trip led through the DOC" />
+        <img src="https://static.wixstatic.com/media/5bebec_5191759dbf9a40c686e732ecf3df94af~mv2.png" alt="Screenshot of a presentation slide from the DOC Design Challenge project" />
+      </div>
+    </div>
+
+    <div class="back-link">
+      <a href="../index.html">← Back to Portfolio</a>
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById("nav-toggle").addEventListener("click", () => {
+      document.getElementById("nav-links").classList.toggle("open");
+    });
+  </script>
+
+</body>
+</html>
