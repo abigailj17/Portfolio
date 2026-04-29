@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cardinal - Abigail Johnson</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caudex:wght@400;700&family=Nunito:wght@300;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Caudex", serif;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    p {
+      font-family: "Avenir", "Nunito", sans-serif;
+      font-weight: 300;
+      font-size: 1.125rem;
+      color: #000;
+    }
+
+    /* Nav */
+    nav {
+      background: #063f0d;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    nav a {
+      color: #f5fff7;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #a8d5b5; }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #f5fff7;
+      font-size: 1.8rem;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      background-image: url('https://static.wixstatic.com/media/5bebec_7f00c8693d8145eab2b42a544044b3c5~mv2.png');
+      background-size: cover;
+      background-position: center;
+      color: #f5fff7;
+      padding: 8rem 3rem 4rem;
+      text-align: left;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(6,63,13,0) 0%, rgba(6,63,13,0) 10%, rgba(6,63,13,0.85) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      white-space: nowrap;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      margin-bottom: 0.75rem;
+    }
+    .hero .type-label {
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #a8d5b5;
+    }
+
+    /* Two-column intro layout */
+    .intro-layout {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 3rem 2rem 0;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .meta-sidebar {
+      background: #f5fff7;
+      border: 1px solid #d4e8d8;
+      border-radius: 8px;
+      padding: 1.5rem;
+      position: sticky;
+      top: 80px;
+    }
+    .meta-item { margin-bottom: 1.2rem; }
+    .meta-item:last-child { margin-bottom: 0; }
+    .meta-item h4 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #063f0d;
+      margin-bottom: 0.25rem;
+    }
+    .meta-item p {
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    /* Main content */
+    .content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 2rem 5rem;
+    }
+
+    /* HMW callout */
+    .hmw {
+      border-left: 4px solid #063f0d;
+      padding: 1rem 1.5rem;
+      margin: 2.5rem 0 1rem;
+      background: #f5fff7;
+      border-radius: 0 6px 6px 0;
+      font-size: 1.05rem;
+      color: #063f0d;
+      font-style: italic;
+    }
+    .hmw + .hmw {
+      margin-top: 0.75rem;
+    }
+
+    /* Sections */
+    .section { margin-bottom: 3rem; }
+    .section h2 {
+      font-size: 1.5rem;
+      color: #063f0d;
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid #d4e8d8;
+    }
+    .section h3 {
+      font-size: 1.4rem;
+      color: #063f0d;
+      margin: 1.5rem 0 0.5rem;
+    }
+    .section ul {
+      font-family: "Avenir", "Nunito", sans-serif;
+      font-weight: 300;
+      font-size: 1.125rem;
+      color: #000;
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .section ul li { margin-bottom: 0.4rem; }
+    .section h4 {
+      font-family: "Avenir", "Nunito", sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #000;
+      margin: 1.2rem 0 0.4rem;
+    }
+    .section p { margin-bottom: 0.9rem; }
+
+    /* Feature boxes */
+    .feature-box {
+      background: #f5fff7;
+      border: 1px solid #d4e8d8;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .feature-box h3 {
+      font-size: 1.1rem;
+      color: #063f0d;
+      margin: 0 0 0.6rem;
+      font-family: "Caudex", serif;
+    }
+    .feature-box p {
+      font-size: 1rem;
+      margin-bottom: 0;
+    }
+
+    /* Persona cards */
+    .persona-card {
+      background: #f5fff7;
+      border-left: 4px solid #063f0d;
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+    }
+    .persona-card .persona-name {
+      font-family: "Caudex", serif;
+      font-weight: 700;
+      color: #063f0d;
+      font-size: 1.05rem;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    .persona-card p { margin-bottom: 0; font-size: 1rem; }
+
+    /* Pain point list */
+    .pain-point-list {
+      list-style: none;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+    .pain-point-list li {
+      background: #f5fff7;
+      border: 1px solid #d4e8d8;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      font-family: "Avenir", "Nunito", sans-serif;
+      font-weight: 300;
+      font-size: 1.125rem;
+      color: #000;
+    }
+
+    /* Priority list */
+    .priority-list {
+      list-style: none;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+    .priority-list li {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1rem 1.5rem;
+      background: #f5fff7;
+      border: 1px solid #d4e8d8;
+      border-radius: 8px;
+    }
+    .priority-num {
+      font-family: "Caudex", serif;
+      font-weight: 700;
+      color: #063f0d;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      line-height: 1.6;
+    }
+    .priority-list li p {
+      margin-bottom: 0;
+      font-size: 1rem;
+    }
+
+    /* Styled table */
+    .styled-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-family: "Avenir", "Nunito", sans-serif;
+      font-size: 1rem;
+    }
+    .styled-table th,
+    .styled-table td {
+      text-align: left;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #d4e8d8;
+      vertical-align: top;
+    }
+    .styled-table th {
+      background: #063f0d;
+      color: #f5fff7;
+      font-weight: 700;
+    }
+    .styled-table tr:hover td { background: #f5fff7; }
+
+    /* Project images */
+    .project-img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin: 1.5rem 0;
+    }
+    .img-caption {
+      font-size: 0.82rem;
+      color: #666;
+      font-style: italic;
+      margin-top: -1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Image with caption side by side */
+    .img-caption-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .img-caption-row img {
+      width: 55%;
+      flex-shrink: 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .img-caption-row .img-caption {
+      font-size: 0.95rem;
+      color: #444;
+      font-style: italic;
+      margin: 0;
+      padding-top: 0.5rem;
+    }
+
+    /* Two-image side by side */
+    .img-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .img-pair img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Three-image row */
+    .img-trio {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .img-trio img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Cardinal logo */
+    .logo-img {
+      display: block;
+      max-width: 200px;
+      height: auto;
+      margin: 1.5rem 0;
+      border-radius: 8px;
+    }
+
+    /* Back link footer */
+    .back-link {
+      text-align: center;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid #eee;
+    }
+    .back-link a {
+      color: #063f0d;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    .back-link a:hover { text-decoration: underline; }
+
+    @media (max-width: 700px) {
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1.25rem;
+      }
+      .nav-toggle { display: block; }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        gap: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #063f0d;
+        padding: 0.5rem 0 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+      }
+      nav ul.open { display: flex; }
+      nav ul li a {
+        display: block;
+        padding: 0.6rem 1rem;
+      }
+      .hero { padding: 4rem 1.5rem 3rem; }
+      .hero-content { white-space: normal; }
+      .hero h1 { font-size: 1.8rem; }
+      .intro-layout { grid-template-columns: 1fr; }
+      .meta-sidebar { position: static; }
+      .img-caption-row { flex-direction: column; }
+      .img-caption-row img { width: 100%; }
+      .img-pair { grid-template-columns: 1fr; }
+      .img-trio { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+    <ul id="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../resources.html">Resources</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Cardinal</h1>
+      <p class="type-label">UI/UX Design</p>
+    </div>
+  </div>
+
+  <div class="intro-layout">
+    <div class="intro-main">
+      <div class="section">
+        <h2>Starting Challenge</h2>
+        <p>As a capstone project in Dartmouth College's UI/UX class, we worked with leaders of the Dartmouth Outing Club to redesign their leader-in-training journey.</p>
+        <p>The Dartmouth Outing Club offers many trips to locations and activities off campus and each trip is led by student leaders. However, the club currently has a shortage of leaders, particularly leaders that come from diverse backgrounds. Additionally, the process of becoming a leader is not standardized, often relying on outdated spreadsheets and personal connections. Therefore, we asked the questions:</p>
+      </div>
+      <div class="hmw">
+        How might we make the process of becoming a leader more accessible for students without a strong outdoor background?
+      </div>
+      <div class="hmw">
+        How might we make the process of completing the co-lead leader requirements less dependent on existing relationships or the ability to strongly advocate for oneself?
+      </div>
+    </div>
+    <aside class="meta-sidebar">
+      <div class="meta-item">
+        <h4>Type</h4>
+        <p>UI/UX Design</p>
+      </div>
+      <div class="meta-item">
+        <h4>Time</h4>
+        <p>2 weeks</p>
+      </div>
+      <div class="meta-item">
+        <h4>Team</h4>
+        <p>Abigail Johnson (designer and developer), Espy Thomson (designer), Alex Wells (developer)</p>
+      </div>
+      <div class="meta-item">
+        <h4>Deliverables</h4>
+        <p>Design System, Figma Prototype, Website Prototype</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="content">
+
+    <div class="section">
+      <h2>The Product: Cardinal</h2>
+      <p>Cardinal aims to create a smooth and supportive journey for leaders in training.</p>
+      <img
+        src="../images/Cardinal/homepage.jpg"
+        alt="Cardinal app screen showing consolidated leader requirements and tracking"
+        class="project-img"
+        style="width: 50%; display: block; margin-left: auto; margin-right: auto;"
+      />
+
+      <div class="feature-box">
+        <h3>Feature 1: Clear, Trackable Requirements</h3>
+        <p>Cardinal provides consolidated and easily accessible information about becoming a leader in all Dartmouth Outing Club subclubs, as well as ways for leaders-in-training to track their requirements.</p>
+      </div>
+      <img src="../images/Cardinal/lit-process-screenshot.jpg" alt="Cardinal app screen showing trip pitch feature" class="project-img" style="width: 50%; display: block; margin-left: auto; margin-right: auto;" />
+
+      <div class="feature-box">
+        <h3>Feature 2: Equitable Access to Current Leaders</h3>
+        <p>Leaders-in-training have the opportunity to either pitch a trip idea that they are interested in and have leaders reach out to them or see and connect with current leaders.</p>
+      </div>
+      <div class="img-pair">
+        <img src="../images/Cardinal/lit-survey.png" alt="Cardinal app screen showing leader connection feature" />
+        <img src="../images/Cardinal/current-leaders.jpg" alt="Cardinal app screen showing leader browsing feature" />
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Background Research</h2>
+      <p>The Dartmouth Outing Club is an umbrella organization that supports 17 subclubs, each of which focus on a different outdoor activity. In order to lead trips for a subclub, a student needs to go through a leader training process. We started our research by finding where prospective leaders can start the process. Google searching "How to become a leader in the Dartmouth Outing Club" will bring you in two clicks to a document with links to each subclub's requirements. Some subclubs also send out termly emails with instructions on how to become a leader. However, these methods are not intuitive and hard to parse. From this research and our interviews afterwards, we learned that finding the resources and the motivation to become a DOC leader relies on a person being in the right place at the right time in order to hear verbal instructions and encouragement for starting the process.</p>
+      <div class="img-pair">
+        <img src="https://static.wixstatic.com/media/5bebec_c31284132b054dfa9cc3e0457cc99448~mv2.png" alt="Screenshot of existing DOC leader resources online" />
+        <img src="https://static.wixstatic.com/media/5bebec_5fa12bbe389a4752bfe05da95b6a5170~mv2.png" alt="Screenshot of existing DOC leader resources online" />
+      </div>
+      <p class="img-caption" style="margin-top: 0;">“On paper” resources for starting the leader-in-training process include a Google doc with links to subclub requirements and emails with these same links. All of these methods are difficult to locate and parse without verbal instruction.</p>
+
+      <p>After a leader decides to start the process, they need to figure out how to track their leader requirements. We learned that clubs use different methods ranging from complicated spreadsheets to no official tracking at all.</p>
+      <div class="img-pair">
+        <img src="https://static.wixstatic.com/media/5bebec_42e0ecb8073c43dda9e80820ae7762d9~mv2.png" alt="Screenshot of an existing DOC leader requirements spreadsheet" />
+        <img src="https://static.wixstatic.com/media/5bebec_e8948097018843eea6cad630c0376ba9~mv2.png" alt="Screenshot of an existing DOC leader requirements spreadsheet" />
+      </div>
+      <p class="img-caption" style="margin-top: 0;">Dartmouth Mountaineering Club and Cabin and Trail spreadsheets for tracking leader requirements, respectively. Each row represents one leader-in-training.</p>
+
+      <p>In our research for this project, we focused on Cabin and Trail (the hiking subclub) and the Dartmouth Mountaineering Club that primarily engages in rock climbing. We chose only two clubs to narrow our scope, and we chose these two because they best represented the range of skills that are taught across the DOC, from more technical knots and climbing techniques to the soft skills of successfully managing group dynamics on backcountry hikes.</p>
+      <p>From our background research, we learned that the resources for becoming a leader in the DOC do exist but are scattered across the internet and are difficult to access and easily use. Our findings helped us come up with interview questions that focused on how leader requirements are actually tracked and what the bright spots and pain points of the current process are.</p>
+    </div>
+
+    <div class="section">
+      <h2>User Research</h2>
+      <p>In order to better understand the experience of becoming a leader for the Dartmouth Outing Club, we conducted in-depth interviews with multiple stakeholders. Our research included current leaders, leaders-in-training and students who did not complete the leader process.</p>
+      <p>We then developed two personas that represented two aspiring leader types:</p>
+
+      <div class="persona-card">
+        <span class="persona-name">Persona 1: Karl McBride — 20, he/him</span>
+        <p>Karl grew up backpacking with his family and went to rockclimbing camps over the summer. He entered Dartmouth confident in his outdoor abilities and in his desire to become a leader.</p>
+      </div>
+
+      <div class="persona-card">
+        <span class="persona-name">Persona 2: Katrina Ma — 19, she/her</span>
+        <p>Katrina comes from Houston, Texas and has never been hiking before. She went on a required first year outdoor trip and wants to go on more. However, she feels behind in her outdoor knowledge.</p>
+      </div>
+
+      <p>We mapped out the journey of the leader process for both of these personas in order to understand the enriched and poached parts of their journeys.</p>
+      <div class="img-pair">
+        <img src="https://static.wixstatic.com/media/5bebec_7b4d7bd5b6b24776bdb1407c0a1fafb8~mv2.png" alt="Journey map for Karl McBride through the DOC leader process" />
+        <img src="https://static.wixstatic.com/media/5bebec_449813a87e1745b0b19cdaee12516e25~mv2.png" alt="Journey map for Katrina Ma through the DOC leader process" />
+      </div>
+      <p class="img-caption" style="margin-top: 0;">Journey maps for Karl and Katrina through the leader-in-training process</p>
+    </div>
+
+    <div class="section">
+      <h2>Pain Points and Insights from the Leader Journey</h2>
+      <p>After reviewing the users' journeys and interview data, we identified three pain points in journeys of applicants similar to Katrina Ma.</p>
+      <ul class="pain-point-list">
+        <li><strong>Inaccessible Leaders</strong> — Leaders-in-training struggle to complete co-lead requirements if they do not have personal connections and contact information for current outdoor leaders.</li>
+        <li><strong>Perceived Inadequacy</strong> — Students who join the DOC with less outdoor exposure, especially people of color, start the leader process feeling like they are in the minority and already behind.</li>
+        <li><strong>Requirements Documentation</strong> — Leader requirements are rarely tracked by leaders or LITs, prompting minimal encouragement of the process of skill-building itself.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Defining Design Priorities</h2>
+      <ul class="priority-list">
+        <li>
+          <span class="priority-num">1</span>
+          <p>Create opportunities for prospective leaders who do not have prior relationships to connect with current leaders</p>
+        </li>
+        <li>
+          <span class="priority-num">2</span>
+          <p>Validate all starting points in the leader journey and the backgrounds of all prospective leaders</p>
+        </li>
+        <li>
+          <span class="priority-num">3</span>
+          <p>Create a system that both simplifies leader requirement tracking and portrays the holistic learning for becoming a leader</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>First Sketches and Greyscales</h2>
+      <p>In our first iterations we decided to focus on the problem of tracking leader requirements. In keeping with our design priority to simplify tracking and encourage focus on the leader process, we wanted to create multiple visualizations of requirements that convey the journey without hierarchy.</p>
+      <div class="img-trio">
+        <img src="https://static.wixstatic.com/media/5bebec_3b371c67b6614478ad7bd4cbab26172d~mv2.png" alt="First sketches of Cardinal interface concepts" />
+        <img src="https://static.wixstatic.com/media/5bebec_23579293546a44d5854d7614bced515b~mv2.png" alt="First greyscale wireframe of Cardinal" />
+        <img src="https://static.wixstatic.com/media/5bebec_2a5fd9859ba845fe8148f89317b8af79~mv2.png" alt="Second greyscale wireframe of Cardinal" />
+      </div>
+      <p class="img-caption" style="margin-top: 0;">Initial sketches and greyscale wireframes</p>
+    </div>
+
+    <div class="section">
+      <h2>The Pivot: A Bird's Eye View of the Leader Process</h2>
+      <p>We showed our grayscales to several users, students in the CS52 Web Development course, and our professor and advisor for this course. While reception was generally positive, people also expressed concerns. One user wondered whether our model actually simplified the process more than a spreadsheet, and another wished there was more support built in for actually planning out the requirements. Our professor summed up these hesitations for us by challenging us to broaden our focus and ask what the pain points are for the leader process as a whole. Perhaps the answer to our need was not just portraying the requirements more clearly, but supporting leaders-in-training with the entire leader process. With this in mind, we conducted 3 more user interviews, came up with 6 pain points and 17 How Might We questions, and did another round of brainstorming and sketching that lead to our second prototype.</p>
+    </div>
+
+    <div class="section">
+      <h2>Second Prototype and Testing</h2>
+      <p>We created a second set of grayscales based on our additional user research and conducted user testing with this set as well. Below are some of the major changes we incorporated as a result of feedback. We also got a lot of positive feedback, including, "This is something that I am really glad that someone is trying to improve."</p>
+      <p>Major changes from feedback:</p>
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Insight</th>
+            <th>Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Main page doesn't have enough info on what a leader is or why to become one</td>
+            <td>Added animated visual with benefits of becoming a leader</td>
+          </tr>
+          <tr>
+            <td>Requirements page still doesn't give LITs a starting point</td>
+            <td>Added FAQ at top + button to expand all tabs</td>
+          </tr>
+          <tr>
+            <td>Pitching process is complicated, doesn't address scheduling conflicts</td>
+            <td>Simplified pitching with tags and minimal inputs + availability input</td>
+          </tr>
+        </tbody>
+      </table>
+      <img
+        src="https://static.wixstatic.com/media/5bebec_525b7b31f967458287f79e9f72c9dbe0~mv2.png"
+        alt="Feedback on the second Cardinal prototype"
+        class="project-img"
+      />
+    </div>
+
+    <div class="section">
+      <h2>On Trusting the Process and Embracing Change</h2>
+      <p>We started this process with a clear need: a complicated and confusing leader-in-training process that needed to be simplified. However, at the beginning of the process we mistook a clear need for a fully-defined one. Once we really dove into user research and worked to shed our bias of what we thought people wanted, we were able to figure out what would actually help them: a platform that fully supports students through the leader-in-training process.</p>
+      <p>At first, it was hard to let go of some of the original work we had done on better representing leader requirements at first. Eventually though, we learned to embrace and appreciate pivots, especially when we saw the excitement our users had for our new ideas.</p>
+    </div>
+
+    <div class="section">
+      <h2>Taking Flight</h2>
+      <p>The next steps necessary for this project include:</p>
+      <ul>
+        <li>Testing a proof of concept for co-leads (does matching people over shared interests and availability really work?)</li>
+        <li>More user testing with our Figma prototype</li>
+        <li>Building out the actual website</li>
+        <li>Linking to or integrating with Trailhead, the DOC's trip sign-up website</li>
+      </ul>
+      <p>A note on website development: this project was done in collaboration with Abigail's final project in her Full Stack Web Development course. In this course we were able to begin building out some of the functionality for viewing subclubs and tracking requirements.</p>
+      <img
+        src="https://static.wixstatic.com/media/5bebec_76704180a83a41b0aef3eb8aea8e8ef1~mv2.png"
+        alt="Cardinal logo"
+        class="logo-img"
+      />
+    </div>
+
+    <div class="back-link">
+      <a href="../index.html">← Back to Portfolio</a>
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById("nav-toggle").addEventListener("click", () => {
+      document.getElementById("nav-links").classList.toggle("open");
+    });
+  </script>
+
+</body>
+</html>
